@@ -1,0 +1,28 @@
+#quartz相关属性配置
+spring:
+  quartz:
+    properties:
+      org:
+        quartz:
+          scheduler:
+            #scheduler实例名称与id分配
+            instanceName: clusteredScheduler
+            instanceId: AUTO
+            #job的保存设置
+#          jobStore:
+#            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+#            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+#            tablePrefix: QRTZ_
+#            isClustered: true
+#            clusterCheckinInterval: 10000
+#            useProperties: false
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+    #数据库方式，默认使用memory的方式（此时不需要配置jobStore）
+#    job-store-type: jdbc
+    #初始化表结构
+#    jdbc:
+#      initialize-schema: never
